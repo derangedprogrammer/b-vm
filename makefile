@@ -5,7 +5,7 @@ LDFLAGS =
 SRC_DIR =	src 
 SRCS 		=	$(wildcard $(SRC_DIR)/.c)
 
-TARGET 	= argb
+TARGET 	=	bvm 
 
 $(TARGET): $(SRCS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(LDFLAGS)

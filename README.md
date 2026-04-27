@@ -1,4 +1,4 @@
-# argb 8-bit vm
+# b-vm 8-bit vm
 
 This is a custom-built 8-bit Virtual Machine designed with a 
 Reduced Instruction Set (RISC) philosophy. It features a dedicated 
