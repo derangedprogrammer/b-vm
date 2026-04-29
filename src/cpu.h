@@ -9,6 +9,7 @@
 #define B_ZERO    0x08
 
 
+
 // we'll add a boot rom once it can execute bytecode
 // const uint8_t boot_rom[1024] = {0}
 struct cpu_t
@@ -24,8 +25,12 @@ struct cpu_t
     uint8_t sp;
 
     // for stuff like the carry flag
-    uint8_t flags;
+  uint8_t flags;
+  uint8_t halted;
 };
 
 void init_cpu(struct cpu_t *cpu);
+void dump_vm(struct cpu_t *cpu);
+void handle_opcode(struct cpu_t *cpu, uint8_t opcode);
+
 #endif
