@@ -4,8 +4,8 @@ This is a custom-built 8-bit Virtual Machine designed with a
 Reduced Instruction Set (RISC) philosophy. It features a dedicated 
 ABCD register file and a strictly defined memory map.
 
-The project mimics the behavior of early 80s microprocessors like 
-the Intel 8080 or Z80, providing a controlled environment for bytecode 
+The project (crappily) mimics the behavior of early 80s microprocessors like 
+the Intel 8080 or Z80, providing a controlled-ish environment for bytecode 
 execution, stack management, and register-to-register arithmetic.
 
 Architecture
