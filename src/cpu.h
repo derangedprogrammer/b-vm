@@ -31,6 +31,6 @@ struct cpu_t
 
 void init_cpu(struct cpu_t *cpu);
 void dump_vm(struct cpu_t *cpu);
-void handle_opcode(struct cpu_t *cpu, uint8_t opcode);
+void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t* mem);
 
 #endif
