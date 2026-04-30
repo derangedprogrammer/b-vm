@@ -6,7 +6,7 @@
 #define REG_C          0x02
 #define REG_D          0x03
 #define REG_IP         0x04
-#define REG_SP         0x05
+#define REG_DP         0x05
 
 /**
  * SYSTEM & UTILITY (0x0X)
@@ -50,7 +50,7 @@
 
 /**
  * STACK OPERATIONS (0x8X)
- * Uses the SP register. Stack usually grows 0xFF -> 0x00.
+ * Uses the DP register. Stack usually grows 0xFF -> 0x00.
  */
 #define OP_STACK_PUSH_REGISTER             0x80
 #define OP_STACK_POP_REGISTER              0x81

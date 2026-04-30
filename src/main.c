@@ -11,13 +11,16 @@
 // looop in the if stmt in main() if you don't want a demo
 //
 // mem
-uint8_t mem[256] = {
+
+uint8_t program_rom[ROM_SIZE] = {
   OP_LOAD_IMMEDIATE_VALUE, REG_A, 0x62,
   OP_LOAD_IMMEDIATE_VALUE, REG_B, 0x68,
   OP_LOAD_IMMEDIATE_VALUE, REG_C, 0x64,
   OP_SWAP_REGISTER_VALUES, REG_C, REG_A,
   OP_SYSTEM_HALT_EXECUTION,
 };
+
+uint8_t data_ram[256] = {0};
 
 struct cpu_t mcpu_obj = {
   // registers A-D
@@ -60,7 +63,7 @@ int main(int argc, char* argv[])
     // comment this out if you don't want a demo
     // otherwise execute whatever was in ram until we hit a HLT instruction
     if (!mcpu->halted)
-      handle_opcode(mcpu, mem[mcpu->ip], mem);
+      handle_opcode(mcpu, program_rom[mcpu->ip], program_rom, data_ram);
 
     // prompt
     dump_vm(mcpu);

@@ -22,15 +22,18 @@ struct cpu_t
 
     // instruction and stack ptr
     uint8_t ip;
-    uint8_t sp;
+    uint8_t dp;
 
     // for stuff like the carry flag
   uint8_t flags;
   uint8_t halted;
 };
 
+#define ROM_SIZE 256 
+#define RAM_SIZE 256
+
 void init_cpu(struct cpu_t *cpu);
 void dump_vm(struct cpu_t *cpu);
-void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t* mem);
+void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t *instruction_rom, uint8_t* data_ram);
 
 #endif
