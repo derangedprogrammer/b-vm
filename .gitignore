@@ -1,2 +1,7 @@
+compile_commands.json
 .compile_commands.json
+out
+.bin
+.out 
+.o
 bvm
