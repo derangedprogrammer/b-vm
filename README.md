@@ -10,17 +10,5 @@ execution, stack management, and register-to-register arithmetic.
 
 Architecture
 
-The VM operates on a Von Neumann model with a 256-byte unified memory space.
-Registers
-
-    A (Accumulator): Primary register for arithmetic and logic results.
-
-    B (Base): Secondary operand storage.
-
-    C (Counter): General-purpose, intended for loop iterations.
-
-    D (Data): General-purpose scratchpad.
-
-    IP (Instruction Pointer): Holds the address of the next instruction to be executed.
-
-    SP (Stack Pointer): Tracks the top of the stack (grows downwards from 0xFF).
+The VM operates on a modified Harvard Architecture model with a 256-byte 
+space for instructions and another 256 for data.
