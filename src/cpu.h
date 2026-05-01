@@ -9,9 +9,16 @@
 #define B_ZERO    0x08
 
 
+// exeption bits
+//
+#define B_EXPT_NONE                         0x00
+#define B_EXPT_DIV_BY_ZERO                  0x01
+#define B_EXPT_INVALID_OPCODE               0x02
+#define B_EXPT_INVALID_REGISTER_ARG         0x04
+#define B_EXPT_ENOMEM                       0x08
+#define B_EXPT_HLT                          0x10
 
-// we'll add a boot rom once it can execute bytecode
-// const uint8_t boot_rom[1024] = {0}
+#define MAX_EXEPTIONS                       6
 struct cpu_t
 {
     // registers
@@ -26,6 +33,7 @@ struct cpu_t
 
     // for stuff like the carry flag
   uint8_t flags;
+  uint8_t exeptions;
   uint8_t halted;
 };
 
