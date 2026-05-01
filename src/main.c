@@ -29,8 +29,11 @@ struct cpu_t mcpu_obj = {
   // IP and SP
   0x00, 0x00,
 
-  // flags and halted
+  // flags and exeptions bitfields 
   0x00, 0x00,
+
+  // halted?
+  0
 };
 
 struct cpu_t *mcpu = &mcpu_obj;
@@ -68,7 +71,7 @@ int main(int argc, char* argv[])
     // prompt
     dump_vm(mcpu);
     printw("Press 'q' to Exit\n"
-          "Delay for each cycle: %d\n\n", sleep_delay);
+          "Delay for each cycle: %ds\n\n", sleep_delay);
     printw("(bvm) ");
     refresh_cycle++;
 
