@@ -17,7 +17,7 @@ void init_cpu(struct cpu_t *cpu)
   
   // zero flags
   cpu->flags = 						0x00;
-  cpu->exeptions = 				0x00;
+  cpu->exceptions = 				0x00;
 }
 
 int mvprintw(int y, int x, const char* fmt, ...);
@@ -157,7 +157,7 @@ void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t *instruction_rom, 
          *reg_dest_ptr = *reg_src_ptr; 
       }
       else {
-        cpu->exeptions |= B_EXPT_INVALID_REGISTER_ARG;
+        cpu->exceptions |= B_EXPT_INVALID_REGISTER_ARG;
       }
       cpu->ip++;
       break;
@@ -183,7 +183,7 @@ void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t *instruction_rom, 
         *reg_b = aux;
       }
       else {
-        cpu->exeptions |= B_EXPT_INVALID_REGISTER_ARG;
+        cpu->exceptions |= B_EXPT_INVALID_REGISTER_ARG;
       }
       cpu->ip++;
       break;
@@ -223,7 +223,7 @@ void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t *instruction_rom, 
         *reg_recipient = data_ram[reg_data_pointed_to];
       }
       else {
-        cpu->exeptions |= B_EXPT_INVALID_REGISTER_ARG;
+        cpu->exceptions |= B_EXPT_INVALID_REGISTER_ARG;
       }
       cpu->ip++;
       break;
@@ -245,7 +245,7 @@ void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t *instruction_rom, 
         // cpu->dp++;     // no auto inc side effects?
       }
       else {
-        cpu->exeptions |= B_EXPT_INVALID_REGISTER_ARG;
+        cpu->exceptions |= B_EXPT_INVALID_REGISTER_ARG;
       }
       cpu->ip++;
       break;
@@ -269,7 +269,7 @@ void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t *instruction_rom, 
         *dest_reg_ptr = data_ram[*src_reg_ptr];
       }
       else {
-        cpu->exeptions |= B_EXPT_INVALID_REGISTER_ARG;
+        cpu->exceptions |= B_EXPT_INVALID_REGISTER_ARG;
       }
       cpu->ip++;
       break;
@@ -301,7 +301,7 @@ void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t *instruction_rom, 
 
       // set the bit for a invalid register argument
       else {
-        cpu->exeptions |= B_EXPT_INVALID_REGISTER_ARG;
+        cpu->exceptions |= B_EXPT_INVALID_REGISTER_ARG;
       }
       cpu->ip++;
       break;
@@ -309,7 +309,7 @@ void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t *instruction_rom, 
 
     default:
     {
-      cpu->exeptions |= B_EXPT_INVALID_OPCODE;
+      cpu->exceptions |= B_EXPT_INVALID_OPCODE;
       cpu->ip++;
       break;
     }

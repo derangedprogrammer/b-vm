@@ -18,7 +18,7 @@
 #define B_EXPT_ENOMEM                       0x08
 #define B_EXPT_HLT                          0x10
 
-#define MAX_EXEPTIONS                       6
+#define MAX_EXCEPTIONS                       6
 struct cpu_t
 {
     // registers
@@ -33,7 +33,7 @@ struct cpu_t
 
     // for stuff like the carry flag
   uint8_t flags;
-  uint8_t exeptions;
+  uint8_t exceptions;
   uint8_t halted;
 };
 
