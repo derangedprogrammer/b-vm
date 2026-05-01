@@ -290,7 +290,9 @@ void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t *instruction_rom, 
         uint16_t result = (uint16_t)(*dest_reg_ptr + *reg_second_ptr);
         
         // set the carry flag if it exceeds 0xFF (8 bit unsigned interger limit) 
+        // set the zero flag if it the result is 0
         cpu->flags = (result > 0xff) ? (cpu->flags | B_CARRY) : (cpu->flags & ~B_CARRY);
+        cpu->flags = ((uint8_t)result == 0) ? (cpu->flags | B_ZERO) : (cpu->flags & ~B_ZERO);
 
         // cast the 16 bit result
         *dest_reg_ptr = (uint8_t)result;
