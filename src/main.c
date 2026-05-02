@@ -38,6 +38,8 @@ struct cpu_t mcpu_obj = {
 
 struct cpu_t *mcpu = &mcpu_obj;
 int refresh_cycle = 0;
+
+extern inst_t* dispatch_table_ptr;
 int main(int argc, char* argv[])
 {
   init_cpu(mcpu);
@@ -66,7 +68,13 @@ int main(int argc, char* argv[])
     // comment this out if you don't want a demo
     // otherwise execute whatever was in ram until we hit a HLT instruction
     if (!mcpu->halted)
-      handle_opcode(mcpu, program_rom[mcpu->ip], program_rom, data_ram);
+      handle_opcode(
+          mcpu,                           // cpu 
+          program_rom[mcpu->ip],          // current instruction the handle will handle
+          dispatch_table_ptr,             // the pointer to the dispatch table address
+          program_rom,                    // instructions
+          data_ram                        // data
+      );
 
     // prompt
     dump_vm(mcpu);

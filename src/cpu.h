@@ -42,6 +42,15 @@ struct cpu_t
 
 void init_cpu(struct cpu_t *cpu);
 void dump_vm(struct cpu_t *cpu);
-void handle_opcode(struct cpu_t *cpu, uint8_t opcode, uint8_t *instruction_rom, uint8_t* data_ram);
 
+// instruction function ptr type
+typedef void (*inst_t)(struct cpu_t *cpu, uint8_t *instruction_rom, uint8_t *data_ram);
+
+void handle_opcode(
+    struct cpu_t              *cpu, 
+    uint8_t                   opcode_dispatch_table_index, 
+    inst_t                    *dispatch_table,
+    uint8_t                   *instruction_rom, 
+    uint8_t                   *data_ram
+);
 #endif
